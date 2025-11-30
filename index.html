@@ -201,13 +201,12 @@
                 </div>
             </div>
         </section>
-
         <!-- PRICING / SIGNUP -->
         <section id="pricing" class="tw-py-24 tw-px-[5%]">
             <div class="tw-max-w-5xl tw-mx-auto tw-bg-coach-text tw-rounded-3xl tw-text-white tw-overflow-hidden tw-shadow-2xl tw-flex tw-flex-col md:tw-flex-row">
                 
-                <!-- Parte Sinistra (Testo) -->
-                <div class="tw-p-10 md:tw-p-12 md:tw-w-1/2 tw-flex tw-flex-col tw-justify-center tw-z-10 tw-relative">
+                <!-- Parte Sinistra (Testo e Form) -->
+                <div class="tw-p-10 md:tw-p-12 md:tw-w-1/2 tw-flex tw-flex-col tw-justify-center tw-z-10">
                     <div class="tw-text-coach-coral tw-font-bold tw-tracking-widest tw-uppercase tw-mb-4">Offerta Beta</div>
                     <h2 class="tw-text-3xl md:tw-text-4xl tw-font-bold tw-mb-4">Entra Oggi.</h2>
                     <p class="tw-text-gray-300 tw-mb-8 tw-text-lg">
@@ -233,15 +232,20 @@
                     </form>
                 </div>
                 
-                <!-- Parte Destra (Immagine) - FIX QUI -->
-                <div class="md:tw-w-1/2 tw-bg-gray-800 tw-relative tw-min-h-[300px] md:tw-min-h-full tw-flex tw-items-end tw-justify-center tw-overflow-hidden">
-                    <!-- Gradiente decorativo -->
-                    <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-gray-900/80 tw-to-transparent tw-z-10"></div>
+                <!-- Parte Destra (Immagine - FIX DEFINITIVO) -->
+                <!-- Usiamo Flexbox per centrare e allineare in basso l'immagine senza absolute -->
+                <div class="md:tw-w-1/2 tw-bg-gray-800 tw-flex tw-items-end tw-justify-center tw-pt-10 md:tw-pt-0 tw-relative tw-overflow-hidden">
                     
-                    <!-- Immagine: Rimosso translate negativo che tagliava, e migliorato il posizionamento -->
+                    <!-- Gradiente decorativo -->
+                    <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-gray-900/90 tw-to-transparent tw-z-10 tw-pointer-events-none"></div>
+                    
+                    <!-- Immagine Phone -->
+                    <!-- tw-w-[80%] su mobile, tw-w-[65%] su desktop -->
+                    <!-- tw-max-w-[350px] per evitare che diventi gigante -->
+                    <!-- tw-mb-[-5%] per farla sbucare leggermente dal basso se vuoi l'effetto "cut-off", altrimenti toglilo -->
                     <img 
                         src="./assets/images/home/phone.png" 
-                        class="tw-relative tw-bottom-[-10%] tw-w-[70%] md:tw-w-[60%] tw-object-contain tw-z-0 tw-transition-transform hover:tw-scale-105 tw-duration-500" 
+                        class="tw-relative tw-z-0 tw-w-[80%] md:tw-w-[65%] tw-max-w-[350px] tw-object-contain tw-transform tw-transition-transform hover:tw-scale-105 tw-duration-500 tw-mb-[-10px]" 
                         alt="App Preview"
                     >
                 </div>
