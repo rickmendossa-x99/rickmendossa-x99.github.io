@@ -17,43 +17,28 @@ function onHeaderClickOutside(e) {
 
 function toggleHeader() {
     if (isHeaderCollapsed) {
-        // APERTURA MENU
-        // Rimuove opacità 0 (quindi diventa visibile)
-        collapseHeaderItems.classList.remove("tw-opacity-0", "tw-pointer-events-none")
-        collapseHeaderItems.classList.add("tw-opacity-100", "tw-pointer-events-auto")
+        // APERTURA
+        collapseHeaderItems.classList.remove("tw-w-0", "tw-opacity-0", "tw-pointer-events-none")
+        collapseHeaderItems.classList.add("tw-w-full", "tw-opacity-100", "tw-pointer-events-auto") // tw-w-full copre schermo
         
-        // Larghezza piena su mobile per vedere bene i link
-        collapseHeaderItems.style.width = "100vw" 
+        collapseBtn.classList.remove("bi-list", "tw-text-coach-text")
+        collapseBtn.classList.add("bi-x", "tw-text-coach-text", "tw-fixed", "tw-right-5", "tw-top-6") // Fissa la X in alto a destra
         
-        // Cambio icona menu -> X
-        collapseBtn.classList.remove("bi-list")
-        collapseBtn.classList.add("bi-x", "max-lg:tw-fixed", "tw-text-coach-text")
-        
-        // Segno come aperto
         isHeaderCollapsed = false
-
-        // Aggiungo listener per chiudere cliccando fuori
         setTimeout(() => window.addEventListener("click", onHeaderClickOutside), 100)
-
     } else {
-        // CHIUSURA MENU
-        collapseHeaderItems.classList.remove("tw-opacity-100", "tw-pointer-events-auto")
-        collapseHeaderItems.classList.add("tw-opacity-0", "tw-pointer-events-none")
+        // CHIUSURA
+        collapseHeaderItems.classList.remove("tw-w-full", "tw-opacity-100", "tw-pointer-events-auto")
+        collapseHeaderItems.classList.add("tw-w-0", "tw-opacity-0", "tw-pointer-events-none")
         
-        // Larghezza zero
-        collapseHeaderItems.style.width = "0vw"
+        collapseBtn.classList.remove("bi-x", "tw-fixed", "tw-right-5", "tw-top-6")
+        collapseBtn.classList.add("bi-list", "tw-text-coach-text")
         
-        // Cambio icona X -> menu
-        collapseBtn.classList.remove("bi-x", "max-lg:tw-fixed")
-        collapseBtn.classList.add("bi-list")
-        
-        // Segno come chiuso
         isHeaderCollapsed = true
-        
-        // Rimuovo listener
         window.removeEventListener("click", onHeaderClickOutside)
     }
 }
+
 
 function responsive() {
     if (window.innerWidth > RESPONSIVE_WIDTH) {
