@@ -8,6 +8,9 @@ let isHeaderCollapsed = window.innerWidth < RESPONSIVE_WIDTH
 const collapseBtn = document.getElementById("collapse-btn")
 const collapseHeaderItems = document.getElementById("collapsed-header-items")
 
+// Variabile per tracciare l'ultima larghezza e ignorare i resize verticali (address bar)
+let lastWindowWidth = window.innerWidth;
+
 function onHeaderClickOutside(e) {
     // Se clicco fuori dal menu E non sul pulsante menu stesso
     if (!collapseHeaderItems.contains(e.target) && !collapseBtn.contains(e.target)) {
@@ -21,24 +24,24 @@ function toggleHeader() {
         collapseHeaderItems.classList.remove("tw-w-0", "tw-opacity-0", "tw-pointer-events-none")
         collapseHeaderItems.classList.add("tw-w-full", "tw-opacity-100", "tw-pointer-events-auto")
         
-        // Forza Z-Index altissimo
+        // Forza Z-Index altissimo e posizione fissa
         collapseHeaderItems.style.zIndex = "9999"
         collapseHeaderItems.style.position = "fixed"
         collapseHeaderItems.style.top = "0"
-        collapseHeaderItems.style.left = "0" // Assicura che parta da sinistra
+        collapseHeaderItems.style.left = "0"
 
-        // Modifica bottone
+        // Modifica pulsante in "X"
         collapseBtn.classList.remove("bi-list", "tw-relative")
         collapseBtn.classList.add("bi-x", "tw-fixed")
         
-        // Forza posizione bottone via stile inline per vincere su tutto
+        // Stili inline per fissare il pulsante sopra il menu bianco
         collapseBtn.style.position = "fixed"
-        collapseBtn.style.top = "24px" // 6 * 4px (tailwnd tw-top-6)
+        collapseBtn.style.top = "24px" 
         collapseBtn.style.right = "5%"
-        collapseBtn.style.zIndex = "10000" // Sopra al menu
+        collapseBtn.style.zIndex = "10000" 
 
         isHeaderCollapsed = false
-        document.body.style.overflow = "hidden" // Blocca scroll
+        document.body.style.overflow = "hidden" // Blocca scroll sotto
 
         setTimeout(() => window.addEventListener("click", onHeaderClickOutside), 100)
     } else {
@@ -46,11 +49,11 @@ function toggleHeader() {
         collapseHeaderItems.classList.remove("tw-w-full", "tw-opacity-100", "tw-pointer-events-auto")
         collapseHeaderItems.classList.add("tw-w-0", "tw-opacity-0", "tw-pointer-events-none")
         
-        // Reset stili bottone
+        // Reset pulsante
         collapseBtn.classList.remove("bi-x", "tw-fixed")
         collapseBtn.classList.add("bi-list", "tw-relative")
         
-        // Rimuovi stili inline forzati
+        // Rimuovi stili inline
         collapseBtn.style.position = ""
         collapseBtn.style.top = ""
         collapseBtn.style.right = ""
@@ -64,20 +67,33 @@ function toggleHeader() {
 }
 
 function responsive() {
+    // FIX: Ignora il resize se la larghezza non è cambiata (es. scroll address bar su mobile)
+    if (window.innerWidth === lastWindowWidth) return;
+    
+    // Aggiorna l'ultima larghezza conosciuta
+    lastWindowWidth = window.innerWidth;
+
     if (window.innerWidth > RESPONSIVE_WIDTH) {
-        // Su desktop resetta tutto
+        // Su desktop resetta tutto per mostrare il menu orizzontale
         collapseHeaderItems.style.width = ""
-        collapseHeaderItems.classList.remove("tw-opacity-0", "tw-pointer-events-none")
+        collapseHeaderItems.classList.remove("tw-opacity-0", "tw-pointer-events-none", "tw-w-0")
         collapseHeaderItems.classList.add("tw-opacity-100", "tw-pointer-events-auto")
+        
+        // Pulisci eventuali stili inline rimasti
+        collapseHeaderItems.style.position = ""
+        collapseHeaderItems.style.zIndex = ""
+        document.body.style.overflow = ""
     } else {
-        // Su mobile resetta a chiuso
-        isHeaderCollapsed = true
-        collapseHeaderItems.style.width = "0vw"
-        collapseHeaderItems.classList.add("tw-opacity-0", "tw-pointer-events-none")
+        // Su mobile, chiudiamo il menu SOLO se stiamo passando da Desktop a Mobile
+        // Non forziamo la chiusura se siamo già su mobile (evita bug strani)
+        if (!isHeaderCollapsed) {
+             toggleHeader(); // Usa la funzione toggle per chiudere pulito
+        }
     }
 }
 
 window.addEventListener("resize", responsive)
+
 
 /**
  * Animations
@@ -85,10 +101,10 @@ window.addEventListener("resize", responsive)
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Animazione iniziale degli elementi reveal-up (nascosti e spostati giù)
+// Animazione iniziale degli elementi reveal-up
 gsap.set(".reveal-up", {
     opacity: 0,
-    y: 50, // meno estremo di "100%"
+    y: 50,
 })
 
 // straightens the slanting image
@@ -104,9 +120,7 @@ gsap.to("#dashboard", {
     }
 })
 
-// FAQ Accordion (corretto per funzionare con i nuovi bottoni)
-// Nota: nell'HTML nuovo abbiamo cambiato classi e struttura per le FAQ
-// Questo codice gestisce l'HTML che ti ho dato nell'ultimo step.
+// FAQ Accordion Logic (Gestita qui, rimuovi script dall'HTML)
 const faqButtons = document.querySelectorAll('.faq-btn')
 
 faqButtons.forEach(btn => {
@@ -116,7 +130,7 @@ faqButtons.forEach(btn => {
         
         // Se è nascosto, mostralo
         if (content.classList.contains('tw-hidden')) {
-            // Chiudi tutti gli altri prima (opzionale, ma elegante)
+            // Chiudi tutti gli altri prima
             document.querySelectorAll('.faq-content').forEach(c => c.classList.add('tw-hidden'));
             document.querySelectorAll('.faq-btn i').forEach(i => {
                 i.classList.remove('bi-dash', 'tw-text-coach-coral');
@@ -141,7 +155,6 @@ faqButtons.forEach(btn => {
 const sections = gsap.utils.toArray("section")
 
 sections.forEach((sec) => {
-    // Selettore sicuro: anima solo se ci sono elementi .reveal-up dentro
     const revealItems = sec.querySelectorAll(".reveal-up");
     
     if(revealItems.length > 0) {
@@ -150,7 +163,6 @@ sections.forEach((sec) => {
                 trigger: sec,
                 start: "top 80%", 
                 end: "bottom 90%",
-                // markers: true, // debug
             },
             opacity: 1,
             duration: 0.8,
@@ -160,4 +172,3 @@ sections.forEach((sec) => {
         })
     }
 })
-
