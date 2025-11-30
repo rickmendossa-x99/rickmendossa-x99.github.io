@@ -1,56 +1,75 @@
 // initialization
-
 const RESPONSIVE_WIDTH = 1024
 
 let headerWhiteBg = false
+// Di default su schermi piccoli è chiuso (true)
 let isHeaderCollapsed = window.innerWidth < RESPONSIVE_WIDTH
+
 const collapseBtn = document.getElementById("collapse-btn")
 const collapseHeaderItems = document.getElementById("collapsed-header-items")
 
-
-
 function onHeaderClickOutside(e) {
-
-    if (!collapseHeaderItems.contains(e.target)) {
+    // Se clicco fuori dal menu E non sul pulsante menu stesso
+    if (!collapseHeaderItems.contains(e.target) && !collapseBtn.contains(e.target)) {
         toggleHeader()
     }
-
 }
-
 
 function toggleHeader() {
     if (isHeaderCollapsed) {
-        // collapseHeaderItems.classList.remove("max-md:tw-opacity-0")
-        collapseHeaderItems.classList.add("opacity-100",)
-        collapseHeaderItems.style.width = "60vw"
+        // APERTURA MENU
+        // Rimuove opacità 0 (quindi diventa visibile)
+        collapseHeaderItems.classList.remove("tw-opacity-0", "tw-pointer-events-none")
+        collapseHeaderItems.classList.add("tw-opacity-100", "tw-pointer-events-auto")
+        
+        // Larghezza piena su mobile per vedere bene i link
+        collapseHeaderItems.style.width = "100vw" 
+        
+        // Cambio icona menu -> X
         collapseBtn.classList.remove("bi-list")
-        collapseBtn.classList.add("bi-x", "max-lg:tw-fixed")
+        collapseBtn.classList.add("bi-x", "max-lg:tw-fixed", "tw-text-coach-text")
+        
+        // Segno come aperto
         isHeaderCollapsed = false
 
-        setTimeout(() => window.addEventListener("click", onHeaderClickOutside), 1)
+        // Aggiungo listener per chiudere cliccando fuori
+        setTimeout(() => window.addEventListener("click", onHeaderClickOutside), 100)
 
     } else {
-        collapseHeaderItems.classList.remove("opacity-100")
+        // CHIUSURA MENU
+        collapseHeaderItems.classList.remove("tw-opacity-100", "tw-pointer-events-auto")
+        collapseHeaderItems.classList.add("tw-opacity-0", "tw-pointer-events-none")
+        
+        // Larghezza zero
         collapseHeaderItems.style.width = "0vw"
+        
+        // Cambio icona X -> menu
         collapseBtn.classList.remove("bi-x", "max-lg:tw-fixed")
         collapseBtn.classList.add("bi-list")
+        
+        // Segno come chiuso
         isHeaderCollapsed = true
+        
+        // Rimuovo listener
         window.removeEventListener("click", onHeaderClickOutside)
-
     }
 }
 
 function responsive() {
     if (window.innerWidth > RESPONSIVE_WIDTH) {
+        // Su desktop resetta tutto
         collapseHeaderItems.style.width = ""
-
+        collapseHeaderItems.classList.remove("tw-opacity-0", "tw-pointer-events-none")
+        collapseHeaderItems.classList.add("tw-opacity-100", "tw-pointer-events-auto")
     } else {
+        // Su mobile resetta a chiuso
         isHeaderCollapsed = true
+        collapseHeaderItems.style.width = "0vw"
+        collapseHeaderItems.classList.add("tw-opacity-0", "tw-pointer-events-none")
     }
 }
 
 window.addEventListener("resize", responsive)
-
 
 /**
  * Animations
@@ -58,85 +77,79 @@ window.addEventListener("resize", responsive)
 
 gsap.registerPlugin(ScrollTrigger)
 
-
-gsap.to(".reveal-up", {
+// Animazione iniziale degli elementi reveal-up (nascosti e spostati giù)
+gsap.set(".reveal-up", {
     opacity: 0,
-    y: "100%",
+    y: 50, // meno estremo di "100%"
 })
-
-// gsap.to("#dashboard", {
-//     boxShadow: "0px 15px 25px -5px #7e22ceaa",
-//     duration: 0.3,
-//     scrollTrigger: {
-//         trigger: "#hero-section",
-//         start: "60% 60%",
-//         end: "80% 80%",
-//         // markers: true
-//     }
-
-// })
 
 // straightens the slanting image
 gsap.to("#dashboard", {
-
     scale: 1,
     translateY: 0,
-    // translateY: "0%",
     rotateX: "0deg",
     scrollTrigger: {
         trigger: "#hero-section",
         start: "top 80%",
         end: "bottom bottom",
         scrub: 1,
-        // markers: true,
     }
-
 })
 
-const faqAccordion = document.querySelectorAll('.faq-accordion')
+// FAQ Accordion (corretto per funzionare con i nuovi bottoni)
+// Nota: nell'HTML nuovo abbiamo cambiato classi e struttura per le FAQ
+// Questo codice gestisce l'HTML che ti ho dato nell'ultimo step.
+const faqButtons = document.querySelectorAll('.faq-btn')
 
-faqAccordion.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-        this.classList.toggle('active')
-
-        // Toggle 'rotate' class to rotate the arrow
-        let content = this.nextElementSibling
+faqButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector('i');
         
-        // content.classList.toggle('!tw-hidden')
-        if (content.style.maxHeight === '200px') {
-            content.style.maxHeight = '0px'
-            content.style.padding = '0px 18px'
+        // Se è nascosto, mostralo
+        if (content.classList.contains('tw-hidden')) {
+            // Chiudi tutti gli altri prima (opzionale, ma elegante)
+            document.querySelectorAll('.faq-content').forEach(c => c.classList.add('tw-hidden'));
+            document.querySelectorAll('.faq-btn i').forEach(i => {
+                i.classList.remove('bi-dash', 'tw-text-coach-coral');
+                i.classList.add('bi-plus');
+            });
 
+            // Apri corrente
+            content.classList.remove('tw-hidden');
+            icon.classList.remove('bi-plus');
+            icon.classList.add('bi-dash', 'tw-text-coach-coral');
         } else {
-            content.style.maxHeight = '200px'
-            content.style.padding = '20px 18px'
+            // Se è già aperto, chiudilo
+            content.classList.add('tw-hidden');
+            icon.classList.remove('bi-dash', 'tw-text-coach-coral');
+            icon.classList.add('bi-plus');
         }
-    })
-})
-
-
+    });
+});
 
 // ------------- reveal section animations ---------------
 
 const sections = gsap.utils.toArray("section")
 
 sections.forEach((sec) => {
-
-    const revealUptimeline = gsap.timeline({paused: true, 
-                                            scrollTrigger: {
-                                                            trigger: sec,
-                                                            start: "10% 80%", // top of trigger hits the top of viewport
-                                                            end: "20% 90%",
-                                                            // markers: true,
-                                                            // scrub: 1,
-                                                        }})
-
-    revealUptimeline.to(sec.querySelectorAll(".reveal-up"), {
-        opacity: 1,
-        duration: 0.8,
-        y: "0%",
-        stagger: 0.2,
-    })
-
-
+    // Selettore sicuro: anima solo se ci sono elementi .reveal-up dentro
+    const revealItems = sec.querySelectorAll(".reveal-up");
+    
+    if(revealItems.length > 0) {
+        gsap.to(revealItems, {
+            scrollTrigger: {
+                trigger: sec,
+                start: "top 80%", 
+                end: "bottom 90%",
+                // markers: true, // debug
+            },
+            opacity: 1,
+            duration: 0.8,
+            y: 0,
+            stagger: 0.2,
+            ease: "power2.out"
+        })
+    }
 })
+
