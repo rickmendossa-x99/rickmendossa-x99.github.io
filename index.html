@@ -30,18 +30,21 @@
                 <img src="./assets/logo/logo.png" alt="logo" class="tw-h-[40px] tw-w-[40px] tw-object-contain" />
                 <span class="tw-font-bold tw-text-xl tw-text-coach-teal">CoachMatch</span>
             </a>
-            
-            <div class="collapsible-header animated-collapse max-lg:tw-shadow-md !tw-bg-white" id="collapsed-header-items">
-                <div class="tw-flex tw-h-full tw-w-max tw-gap-8 tw-text-base max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end lg:tw-mx-auto lg:tw-place-items-center">
-                    <a class="tw-text-gray-600 hover:tw-text-coach-coral tw-font-medium tw-transition-colors" href="#features">Features</a>
-                    <a class="tw-text-gray-600 hover:tw-text-coach-coral tw-font-medium tw-transition-colors" href="#pricing">Prezzi</a>
-                    <a class="tw-text-gray-600 hover:tw-text-coach-coral tw-font-medium tw-transition-colors" href="#faq">FAQ</a>
-                </div>
-                <div class="tw-mx-4 tw-flex tw-place-items-center max-md:tw-w-full max-md:tw-flex-col">
-                    <a href="#pricing" class="tw-rounded-full tw-bg-coach-coral tw-text-white tw-px-6 tw-py-2.5 tw-font-bold tw-transition-transform hover:tw-scale-105 hover:tw-shadow-lg">
-                        <span>Beta Access</span>
-                    </a>
-                </div>
+            <div
+            class="collapsible-header animated-collapse tw-fixed tw-top-0 tw-right-0 tw-h-screen tw-bg-white tw-shadow-2xl tw-flex tw-flex-col tw-items-end tw-pt-24 tw-pr-6 tw-pl-10 tw-space-y-6 tw-transition-all tw-duration-300 tw-opacity-0 tw-pointer-events-none lg:tw-hidden"
+            id="collapsed-header-items"
+            >
+            <a class="tw-text-gray-700 tw-text-lg tw-font-medium" href="#features" onclick="toggleHeader()">Features</a>
+            <a class="tw-text-gray-700 tw-text-lg tw-font-medium" href="#pricing" onclick="toggleHeader()">Prezzi</a>
+            <a class="tw-text-gray-700 tw-text-lg tw-font-medium" href="#faq" onclick="toggleHeader()">FAQ</a>
+            <a
+                href="#pricing"
+                class="tw-mt-4 tw-rounded-full tw-bg-coach-coral tw-text-white tw-px-6 tw-py-2.5 tw-font-bold tw-shadow-md"
+                onclick="toggleHeader()"
+            >
+                Beta Access
+            </a>
+            </div>
             </div>
             <button class="bi bi-list tw-absolute tw-right-5 tw-top-6 tw-z-50 tw-text-3xl tw-text-coach-text lg:tw-hidden" onclick="toggleHeader()" id="collapse-btn"></button>
         </header>
@@ -199,13 +202,23 @@
                     <p class="tw-text-gray-300 tw-mb-8 tw-text-lg">
                         Ottieni l'accesso anticipato e blocca il prezzo a <strong class="tw-text-white">€1.99/mese a vita</strong> (invece di €3.99).
                     </p>
-                    
                     <form class="tw-flex tw-flex-col tw-gap-4" onsubmit="handleSignup(event)">
-                        <div class="tw-bg-white tw-p-1.5 tw-rounded-full tw-flex">
-                            <input type="email" name="email" placeholder="La tua email..." required class="tw-flex-1 tw-bg-transparent tw-px-6 tw-text-gray-800 tw-outline-none">
-                            <button class="tw-bg-coach-teal tw-text-white tw-px-6 tw-py-3 tw-rounded-full tw-font-bold hover:tw-bg-opacity-90">Iscriviti</button>
-                        </div>
-                        <p class="tw-text-xs tw-text-gray-400 tw-text-center">Solo per i primi 100 iscritti.</p>
+                    <div class="tw-bg-white tw-p-2 tw-rounded-full tw-flex tw-flex-col sm:tw-flex-row tw-items-stretch tw-gap-2">
+                        <input
+                        type="email"
+                        name="email"
+                        placeholder="La tua email..."
+                        required
+                        class="tw-flex-1 tw-bg-transparent tw-px-4 tw-py-2 tw-text-gray-800 tw-outline-none tw-min-w-0 tw-rounded-full"
+                        />
+                        <button
+                        type="submit"
+                        class="tw-bg-coach-teal tw-text-white tw-px-6 tw-py-2.5 tw-rounded-full tw-font-bold hover:tw-bg-opacity-90 tw-w-full sm:tw-w-auto"
+                        >
+                        Iscriviti
+                        </button>
+                    </div>
+                    <p class="tw-text-xs tw-text-gray-400 tw-text-center">Solo per i primi 100 iscritti.</p>
                     </form>
                 </div>
                 <div class="md:tw-w-1/2 tw-bg-gray-800 tw-relative tw-min-h-[300px]">
