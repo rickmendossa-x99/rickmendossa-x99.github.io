@@ -18,26 +18,40 @@ function onHeaderClickOutside(e) {
 function toggleHeader() {
     if (isHeaderCollapsed) {
         // APERTURA
+        // Rendi visibile il pannello a tutto schermo
         collapseHeaderItems.classList.remove("tw-w-0", "tw-opacity-0", "tw-pointer-events-none")
-        collapseHeaderItems.classList.add("tw-w-full", "tw-opacity-100", "tw-pointer-events-auto") // tw-w-full copre schermo
+        collapseHeaderItems.classList.add("tw-w-full", "tw-opacity-100", "tw-pointer-events-auto") 
         
-        collapseBtn.classList.remove("bi-list", "tw-text-coach-text")
-        collapseBtn.classList.add("bi-x", "tw-text-coach-text", "tw-fixed", "tw-right-5", "tw-top-6") // Fissa la X in alto a destra
-        
+        // Stile Z-Index alto per stare sopra a tutto
+        collapseHeaderItems.style.zIndex = "100"
+
+        // Trasforma il bottone in X e fissalo in alto a destra rispetto alla FINESTRA (fixed)
+        collapseBtn.classList.remove("bi-list", "tw-relative") // Rimuovi relative se c'era
+        collapseBtn.classList.add("bi-x", "tw-fixed", "tw-top-6", "tw-right-[5%]", "tw-z-[101]") 
+        // Nota: tw-right-[5%] per allinearlo col padding originale, tw-z-[101] per stare sopra il menu bianco
+
         isHeaderCollapsed = false
+        // Blocca lo scroll della pagina sotto quando il menu è aperto (opzionale ma consigliato)
+        document.body.style.overflow = "hidden"
+
         setTimeout(() => window.addEventListener("click", onHeaderClickOutside), 100)
     } else {
         // CHIUSURA
         collapseHeaderItems.classList.remove("tw-w-full", "tw-opacity-100", "tw-pointer-events-auto")
         collapseHeaderItems.classList.add("tw-w-0", "tw-opacity-0", "tw-pointer-events-none")
         
-        collapseBtn.classList.remove("bi-x", "tw-fixed", "tw-right-5", "tw-top-6")
-        collapseBtn.classList.add("bi-list", "tw-text-coach-text")
+        // Reset del bottone
+        collapseBtn.classList.remove("bi-x", "tw-fixed", "tw-top-6", "tw-right-[5%]", "tw-z-[101]")
+        collapseBtn.classList.add("bi-list", "tw-relative") // Torna relativo all'header
         
         isHeaderCollapsed = true
+        // Riabilita lo scroll
+        document.body.style.overflow = ""
+
         window.removeEventListener("click", onHeaderClickOutside)
     }
 }
+
 
 
 function responsive() {
