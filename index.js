@@ -18,21 +18,27 @@ function onHeaderClickOutside(e) {
 function toggleHeader() {
     if (isHeaderCollapsed) {
         // APERTURA
-        // Rendi visibile il pannello a tutto schermo
         collapseHeaderItems.classList.remove("tw-w-0", "tw-opacity-0", "tw-pointer-events-none")
-        collapseHeaderItems.classList.add("tw-w-full", "tw-opacity-100", "tw-pointer-events-auto") 
+        collapseHeaderItems.classList.add("tw-w-full", "tw-opacity-100", "tw-pointer-events-auto")
         
-        // Stile Z-Index alto per stare sopra a tutto
-        collapseHeaderItems.style.zIndex = "100"
+        // Forza Z-Index altissimo
+        collapseHeaderItems.style.zIndex = "9999"
+        collapseHeaderItems.style.position = "fixed"
+        collapseHeaderItems.style.top = "0"
+        collapseHeaderItems.style.left = "0" // Assicura che parta da sinistra
 
-        // Trasforma il bottone in X e fissalo in alto a destra rispetto alla FINESTRA (fixed)
-        collapseBtn.classList.remove("bi-list", "tw-relative") // Rimuovi relative se c'era
-        collapseBtn.classList.add("bi-x", "tw-fixed", "tw-top-6", "tw-right-[5%]", "tw-z-[101]") 
-        // Nota: tw-right-[5%] per allinearlo col padding originale, tw-z-[101] per stare sopra il menu bianco
+        // Modifica bottone
+        collapseBtn.classList.remove("bi-list", "tw-relative")
+        collapseBtn.classList.add("bi-x", "tw-fixed")
+        
+        // Forza posizione bottone via stile inline per vincere su tutto
+        collapseBtn.style.position = "fixed"
+        collapseBtn.style.top = "24px" // 6 * 4px (tailwnd tw-top-6)
+        collapseBtn.style.right = "5%"
+        collapseBtn.style.zIndex = "10000" // Sopra al menu
 
         isHeaderCollapsed = false
-        // Blocca lo scroll della pagina sotto quando il menu è aperto (opzionale ma consigliato)
-        document.body.style.overflow = "hidden"
+        document.body.style.overflow = "hidden" // Blocca scroll
 
         setTimeout(() => window.addEventListener("click", onHeaderClickOutside), 100)
     } else {
@@ -40,19 +46,22 @@ function toggleHeader() {
         collapseHeaderItems.classList.remove("tw-w-full", "tw-opacity-100", "tw-pointer-events-auto")
         collapseHeaderItems.classList.add("tw-w-0", "tw-opacity-0", "tw-pointer-events-none")
         
-        // Reset del bottone
-        collapseBtn.classList.remove("bi-x", "tw-fixed", "tw-top-6", "tw-right-[5%]", "tw-z-[101]")
-        collapseBtn.classList.add("bi-list", "tw-relative") // Torna relativo all'header
+        // Reset stili bottone
+        collapseBtn.classList.remove("bi-x", "tw-fixed")
+        collapseBtn.classList.add("bi-list", "tw-relative")
         
+        // Rimuovi stili inline forzati
+        collapseBtn.style.position = ""
+        collapseBtn.style.top = ""
+        collapseBtn.style.right = ""
+        collapseBtn.style.zIndex = ""
+
         isHeaderCollapsed = true
-        // Riabilita lo scroll
-        document.body.style.overflow = ""
+        document.body.style.overflow = "" // Sblocca scroll
 
         window.removeEventListener("click", onHeaderClickOutside)
     }
 }
-
-
 
 function responsive() {
     if (window.innerWidth > RESPONSIVE_WIDTH) {

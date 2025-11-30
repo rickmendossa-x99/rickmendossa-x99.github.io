@@ -255,25 +255,15 @@
         <!-- SCRIPTS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
+        
+        <!-- Il tuo file JS principale -->
         <script src="./index.js"></script>
         
+        <!-- Funzione per il Form (l'unica che serve qui) -->
         <script>
-            // Simple FAQ Toggle
-            document.querySelectorAll('.faq-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const content = btn.nextElementSibling;
-                    content.classList.toggle('tw-hidden');
-                    const icon = btn.querySelector('i');
-                    icon.classList.toggle('bi-plus');
-                    icon.classList.toggle('bi-dash');
-                });
-            });
-
-            // Handle Signup - SIMULAZIONE
             function handleSignup(e) {
                 e.preventDefault();
                 const email = e.target.querySelector('input').value;
-                // Qui in futuro metteremo la chiamata al Database
                 alert('✅ Grazie! Sei in lista d\'attesa con: ' + email);
                 e.target.reset();
             }
