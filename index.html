@@ -20,64 +20,69 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     </head>
 
-    <body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-coach-bg tw-text-coach-text tw-font-sans">
+    <body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-coach-bg tw-text-white tw-font-sans">
         
         <!-- HEADER FISSO -->
-        <header class="tw-fixed tw-top-0 tw-z-50 tw-w-full tw-bg-white/90 tw-backdrop-blur-md tw-shadow-sm tw-transition-all tw-duration-300">
+        <header class="tw-fixed tw-top-0 tw-z-50 tw-w-full tw-bg-[#1A1B26]/90 tw-backdrop-blur-md tw-shadow-lg tw-border-b tw-border-white/5 tw-transition-all tw-duration-300">
             <div class="tw-flex tw-h-[80px] tw-w-full tw-items-center tw-justify-between tw-px-[5%] lg:tw-justify-around">
                 
                 <!-- LOGO -->
                 <a class="tw-flex tw-items-center tw-gap-3 tw-min-w-max tw-z-50" href="#">
                     <img src="./assets/logo/logo.png" alt="logo" class="tw-h-[60px] tw-w-[60px] md:tw-h-[70px] md:tw-w-[70px] tw-object-contain" />
-                    <span class="tw-font-bold tw-text-xl tw-text-coach-teal">CoachMatch</span>
+                    <span class="tw-font-bold tw-text-xl tw-tracking-tight">CoachMatch</span>
                 </a>
                 
-                <!-- MENU DESKTOP (Visibile solo su LG+) -->
+                <!-- MENU DESKTOP -->
                 <div class="tw-hidden lg:tw-flex tw-gap-8 tw-items-center">
-                    <a class="tw-text-gray-600 hover:tw-text-coach-coral tw-font-medium tw-transition-colors" href="#features">Features</a>
-                    <a class="tw-text-gray-600 hover:tw-text-coach-coral tw-font-medium tw-transition-colors" href="#pricing">Prezzi</a>
-                    <a class="tw-text-gray-600 hover:tw-text-coach-coral tw-font-medium tw-transition-colors" href="#faq">FAQ</a>
-                    <a href="#pricing" class="tw-rounded-full tw-bg-coach-coral tw-text-white tw-px-6 tw-py-2.5 tw-font-bold tw-transition-transform hover:tw-scale-105 hover:tw-shadow-lg">
+                    <a class="tw-text-gray-300 hover:tw-text-coach-coral tw-font-medium tw-transition-colors" href="#features">Features</a>
+                    <a class="tw-text-gray-300 hover:tw-text-coach-coral tw-font-medium tw-transition-colors" href="#pricing">Prezzi</a>
+                    <a class="tw-text-gray-300 hover:tw-text-coach-coral tw-font-medium tw-transition-colors" href="#faq">FAQ</a>
+                    <a href="#pricing" class="tw-rounded-full tw-bg-coach-coral tw-text-white tw-px-6 tw-py-2.5 tw-font-bold tw-transition-transform hover:tw-scale-105 hover:tw-shadow-[0_0_15px_rgba(255,0,110,0.5)]">
                         Beta Access
                     </a>
                 </div>
 
-                <!-- PULSANTE MENU MOBILE (Visibile solo su Mobile) -->
-                <button class="bi bi-list tw-text-3xl tw-text-coach-text lg:tw-hidden tw-z-50 tw-relative" onclick="toggleHeader()" id="collapse-btn" aria-label="Menu"></button>
+                <!-- PULSANTE MENU MOBILE -->
+                <button class="bi bi-list tw-text-3xl tw-text-white lg:tw-hidden tw-z-50 tw-relative" onclick="toggleHeader()" id="collapse-btn" aria-label="Menu"></button>
             </div>
 
-            <!-- MENU MOBILE (Nascosto di default, gestito da JS) -->
-            <div id="collapsed-header-items" class="tw-fixed tw-top-0 tw-right-0 tw-h-screen tw-bg-white tw-shadow-2xl tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-8 tw-w-0 tw-opacity-0 tw-pointer-events-none tw-transition-all tw-duration-300 tw-z-40 lg:tw-hidden">
-                <a class="tw-text-2xl tw-text-gray-700 hover:tw-text-coach-coral tw-font-bold" href="#features" onclick="toggleHeader()">Features</a>
-                <a class="tw-text-2xl tw-text-gray-700 hover:tw-text-coach-coral tw-font-bold" href="#pricing" onclick="toggleHeader()">Prezzi</a>
-                <a class="tw-text-2xl tw-text-gray-700 hover:tw-text-coach-coral tw-font-bold" href="#faq" onclick="toggleHeader()">FAQ</a>
-                <a href="#pricing" class="tw-rounded-full tw-bg-coach-coral tw-text-white tw-px-8 tw-py-3 tw-text-xl tw-font-bold tw-mt-4" onclick="toggleHeader()">
+            <!-- MENU MOBILE -->
+            <div id="collapsed-header-items" class="tw-fixed tw-top-0 tw-right-0 tw-h-screen tw-bg-[#1A1B26] tw-border-l tw-border-white/10 tw-shadow-2xl tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-8 tw-w-0 tw-opacity-0 tw-pointer-events-none tw-transition-all tw-duration-300 tw-z-40 lg:tw-hidden">
+                <a class="tw-text-2xl tw-text-gray-200 hover:tw-text-coach-coral tw-font-bold" href="#features" onclick="toggleHeader()">Features</a>
+                <a class="tw-text-2xl tw-text-gray-200 hover:tw-text-coach-coral tw-font-bold" href="#pricing" onclick="toggleHeader()">Prezzi</a>
+                <a class="tw-text-2xl tw-text-gray-200 hover:tw-text-coach-coral tw-font-bold" href="#faq" onclick="toggleHeader()">FAQ</a>
+                <a href="#pricing" class="tw-rounded-full tw-bg-coach-coral tw-text-white tw-px-8 tw-py-3 tw-text-xl tw-font-bold tw-mt-4 tw-shadow-[0_0_20px_rgba(255,0,110,0.4)]" onclick="toggleHeader()">
                     Beta Access
                 </a>
             </div>
         </header>
 
-
         <!-- HERO SECTION -->
         <section class="hero-section tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-flex-col tw-overflow-hidden tw-pt-[100px]" id="hero-section">
-            <div class="tw-flex tw-h-full tw-w-full tw-flex-col tw-place-content-center tw-gap-6 tw-p-[5%] max-xl:tw-place-items-center">
+            <!-- Background Glow Effects -->
+            <div class="tw-absolute tw-top-[-10%] tw-left-[-10%] tw-w-[500px] tw-h-[500px] tw-bg-coach-teal/20 tw-blur-[120px] tw-rounded-full tw-pointer-events-none"></div>
+            <div class="tw-absolute tw-bottom-[10%] tw-right-[-5%] tw-w-[400px] tw-h-[400px] tw-bg-coach-coral/15 tw-blur-[100px] tw-rounded-full tw-pointer-events-none"></div>
+
+            <div class="tw-flex tw-h-full tw-w-full tw-flex-col tw-place-content-center tw-gap-6 tw-p-[5%] max-xl:tw-place-items-center tw-relative tw-z-10">
                 
                 <div class="tw-flex tw-flex-col tw-place-content-center tw-items-center">
                     <div class="reveal-up tw-text-center">
-                        <span class="tw-text-coach-teal tw-font-bold tw-tracking-wider tw-uppercase tw-mb-2 tw-block">AI Dating Coach</span>
-                        <h1 class="tw-text-5xl md:tw-text-7xl tw-font-bold tw-leading-tight tw-text-coach-text">
+                        <span class="tw-text-coach-teal tw-font-bold tw-tracking-wider tw-uppercase tw-mb-3 tw-block tw-text-sm">AI Dating Coach</span>
+                        <h1 class="tw-text-5xl md:tw-text-7xl tw-font-bold tw-leading-tight tw-text-white tw-mb-6">
                             Dating Senza<br>
-                            <span class="tw-text-coach-coral">Ansia.</span>
+                            <span class="tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-r tw-from-[#3D5AFE] tw-to-[#FF006E]">
+                                Ansia.
+                            </span>
                         </h1>
                     </div>
                 </div>
-                <div class="reveal-up tw-relative tw-mt-12 tw-flex tw-w-full tw-justify-center tw-items-end tw-perspective-[1000px]" id="dashboard-container">
-                    
-                    <!-- Glow decorativo -->
-                    <div class="tw-absolute tw-top-1/2 tw-left-1/2 tw--translate-x-1/2 tw--translate-y-1/2 tw-h-[350px] tw-w-[350px] tw-bg-coach-teal/20 tw-blur-[100px] tw-rounded-full tw-z-0"></div>
+
+                <!-- HERO IMAGE CONTAINER -->
+                <div class="reveal-up tw-relative tw-mt-8 tw-flex tw-w-full tw-justify-center tw-items-end tw-perspective-[1000px]" id="dashboard-container">
+                    <!-- Glow decorativo centrale -->
+                    <div class="tw-absolute tw-top-1/2 tw-left-1/2 tw--translate-x-1/2 tw--translate-y-1/2 tw-h-[350px] tw-w-[350px] tw-bg-[#3D5AFE]/30 tw-blur-[100px] tw-rounded-full tw-z-0"></div>
                     
                     <!-- Immagine Phone -->
-                    <!-- L'ID 'dashboard' è fondamentale per l'animazione GSAP -->
                     <img 
                         id="dashboard"
                         src="./assets/images/home/phone.png" 
@@ -85,17 +90,18 @@
                         class="tw-relative tw-z-10 tw-w-[80%] sm:tw-w-[60%] md:tw-w-[380px] lg:tw-w-[420px] tw-max-w-[450px] tw-object-contain tw-drop-shadow-2xl will-change-transform"
                     />
                 </div>
+
                 <div class="tw-flex tw-flex-col tw-items-center tw-text-center tw-max-w-2xl tw-mx-auto">
-                     <p class="reveal-up tw-mt-8 tw-text-lg tw-text-gray-600">
-                        Profilo perfetto, suggerimenti smart e supporto emotivo 24/7.
+                     <p class="reveal-up tw-mt-8 tw-text-lg tw-text-gray-400">
+                        Profilo perfetto, suggerimenti smart e supporto emotivo 24/7.<br class="tw-hidden md:tw-block">
                         Smetti di swipare a caso, inizia a connettere davvero.
                     </p>
 
-                    <div class="reveal-up tw-mt-8 tw-flex tw-gap-4">
-                        <a class="tw-bg-coach-teal tw-text-white tw-px-8 tw-py-3 tw-rounded-full tw-font-bold tw-shadow-lg hover:tw-bg-opacity-90 tw-transition-all" href="#pricing">
+                    <div class="reveal-up tw-mt-10 tw-flex tw-flex-col sm:tw-flex-row tw-gap-4">
+                        <a class="tw-bg-coach-coral tw-text-white tw-px-8 tw-py-3.5 tw-rounded-full tw-font-bold tw-shadow-[0_0_20px_rgba(255,0,110,0.4)] hover:tw-shadow-[0_0_30px_rgba(255,0,110,0.6)] hover:tw-scale-105 tw-transition-all tw-text-center" href="#pricing">
                             Inizia Gratis
                         </a>
-                        <a class="tw-bg-white tw-text-coach-text tw-border tw-border-gray-200 tw-px-8 tw-py-3 tw-rounded-full tw-font-medium hover:tw-bg-gray-50 tw-transition-all tw-flex tw-items-center tw-gap-2" href="#features">
+                        <a class="tw-bg-white/10 tw-backdrop-blur-sm tw-text-white tw-border tw-border-white/20 tw-px-8 tw-py-3.5 tw-rounded-full tw-font-medium hover:tw-bg-white/20 tw-transition-all tw-flex tw-items-center tw-justify-center tw-gap-2" href="#features">
                             <i class="bi bi-play-circle"></i> Come funziona
                         </a>
                     </div>
@@ -103,152 +109,142 @@
             </div>
         </section>
 
-        <!-- SOCIAL PROOF AGGIORNATA (Tech Generica) -->
-        <section class="tw-py-10 tw-bg-white tw-border-y tw-border-gray-100">
-            <div class="tw-text-center tw-mb-8 tw-text-gray-400 tw-font-medium tw-uppercase tw-text-sm tw-tracking-widest">
+        <!-- SOCIAL PROOF (Dark Tech) -->
+        <section class="tw-py-10 tw-bg-coach-card/50 tw-border-y tw-border-white/5">
+            <div class="tw-text-center tw-mb-8 tw-text-gray-500 tw-font-medium tw-uppercase tw-text-xs tw-tracking-widest">
                 Powered by Secure Technology
             </div>
             
-            <!-- Nuove Icone Generiche -->
-            <div class="reveal-up tw-flex tw-flex-wrap tw-justify-center tw-gap-16 tw-opacity-70">
-                
+            <div class="reveal-up tw-flex tw-flex-wrap tw-justify-center tw-gap-12 md:tw-gap-20 tw-opacity-60 hover:tw-opacity-100 tw-transition-opacity">
                 <!-- Security Icon -->
-                <div class="tw-flex tw-items-center tw-gap-2 tw-text-gray-500">
-                    <i class="bi bi-shield-lock-fill tw-text-2xl"></i>
+                <div class="tw-flex tw-items-center tw-gap-3 tw-text-gray-400">
+                    <i class="bi bi-shield-lock-fill tw-text-2xl tw-text-coach-teal"></i>
                     <span class="tw-font-semibold">SSL Secure</span>
                 </div>
 
                 <!-- AI Icon -->
-                <div class="tw-flex tw-items-center tw-gap-2 tw-text-gray-500">
-                    <i class="bi bi-lightning-charge-fill tw-text-2xl"></i>
+                <div class="tw-flex tw-items-center tw-gap-3 tw-text-gray-400">
+                    <i class="bi bi-lightning-charge-fill tw-text-2xl tw-text-coach-lime"></i>
                     <span class="tw-font-semibold">Fast AI</span>
                 </div>
 
                 <!-- Privacy Icon -->
-                <div class="tw-flex tw-items-center tw-gap-2 tw-text-gray-500">
-                    <i class="bi bi-eye-slash-fill tw-text-2xl"></i>
+                <div class="tw-flex tw-items-center tw-gap-3 tw-text-gray-400">
+                    <i class="bi bi-eye-slash-fill tw-text-2xl tw-text-coach-coral"></i>
                     <span class="tw-font-semibold">Privacy First</span>
                 </div>
-
             </div>
         </section>
 
         <!-- FEATURES SECTION -->
         <section id="features" class="tw-py-24 tw-px-[5%]">
             <div class="tw-text-center tw-mb-16">
-                <h2 class="tw-text-4xl tw-font-bold tw-text-coach-text tw-mb-4">Funzionalità Chiave</h2>
-                <p class="tw-text-gray-600">Tutto ciò che ti serve per date migliori.</p>
+                <h2 class="tw-text-3xl md:tw-text-4xl tw-font-bold tw-text-white tw-mb-4">Funzionalità Chiave</h2>
+                <p class="tw-text-gray-400">Tutto ciò che ti serve per date migliori.</p>
             </div>
             
-            <div class="tw-grid md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-8">
+            <div class="tw-grid md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-6">
                 <!-- Feature 1 -->
-                <div class="reveal-up tw-bg-white tw-p-8 tw-rounded-2xl tw-shadow-sm hover:tw-shadow-md tw-transition-all tw-border tw-border-gray-100">
+                <div class="reveal-up tw-bg-coach-card tw-p-8 tw-rounded-2xl tw-border tw-border-white/5 hover:tw-border-coach-teal/50 hover:tw-shadow-[0_5px_20px_rgba(61,90,254,0.15)] tw-transition-all">
                     <div class="tw-w-12 tw-h-12 tw-bg-coach-teal/10 tw-rounded-xl tw-flex tw-items-center tw-justify-center tw-mb-6">
                         <i class="bi bi-chat-dots tw-text-2xl tw-text-coach-teal"></i>
                     </div>
-                    <h3 class="tw-text-xl tw-font-bold tw-mb-3">Analisi Chat</h3>
-                    <p class="tw-text-gray-600 tw-text-sm">Non sai cosa rispondere? L'AI ti suggerisce la mossa giusta.</p>
+                    <h3 class="tw-text-xl tw-font-bold tw-mb-3 tw-text-white">Analisi Chat</h3>
+                    <p class="tw-text-gray-400 tw-text-sm">Non sai cosa rispondere? L'AI ti suggerisce la mossa giusta.</p>
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="reveal-up tw-bg-white tw-p-8 tw-rounded-2xl tw-shadow-sm hover:tw-shadow-md tw-transition-all tw-border tw-border-gray-100">
+                <div class="reveal-up tw-bg-coach-card tw-p-8 tw-rounded-2xl tw-border tw-border-white/5 hover:tw-border-coach-coral/50 hover:tw-shadow-[0_5px_20px_rgba(255,0,110,0.15)] tw-transition-all">
                     <div class="tw-w-12 tw-h-12 tw-bg-coach-coral/10 tw-rounded-xl tw-flex tw-items-center tw-justify-center tw-mb-6">
                         <i class="bi bi-heart-pulse tw-text-2xl tw-text-coach-coral"></i>
                     </div>
-                    <h3 class="tw-text-xl tw-font-bold tw-mb-3">No Ghosting</h3>
-                    <p class="tw-text-gray-600 tw-text-sm">Capisci i segnali e gestisci l'ansia dell'attesa con il coach.</p>
+                    <h3 class="tw-text-xl tw-font-bold tw-mb-3 tw-text-white">No Ghosting</h3>
+                    <p class="tw-text-gray-400 tw-text-sm">Capisci i segnali e gestisci l'ansia dell'attesa con il coach.</p>
                 </div>
 
                 <!-- Feature 3 -->
-                <div class="reveal-up tw-bg-white tw-p-8 tw-rounded-2xl tw-shadow-sm hover:tw-shadow-md tw-transition-all tw-border tw-border-gray-100">
-                    <div class="tw-w-12 tw-h-12 tw-bg-coach-green/30 tw-rounded-xl tw-flex tw-items-center tw-justify-center tw-mb-6">
-                        <i class="bi bi-person-check tw-text-2xl tw-text-green-600"></i>
+                <div class="reveal-up tw-bg-coach-card tw-p-8 tw-rounded-2xl tw-border tw-border-white/5 hover:tw-border-coach-lime/50 hover:tw-shadow-[0_5px_20px_rgba(255,244,79,0.15)] tw-transition-all">
+                    <div class="tw-w-12 tw-h-12 tw-bg-coach-lime/10 tw-rounded-xl tw-flex tw-items-center tw-justify-center tw-mb-6">
+                        <i class="bi bi-person-check tw-text-2xl tw-text-coach-lime"></i>
                     </div>
-                    <h3 class="tw-text-xl tw-font-bold tw-mb-3">Profilo Top</h3>
-                    <p class="tw-text-gray-600 tw-text-sm">Ottimizza bio e foto per attrarre persone compatibili.</p>
+                    <h3 class="tw-text-xl tw-font-bold tw-mb-3 tw-text-white">Profilo Top</h3>
+                    <p class="tw-text-gray-400 tw-text-sm">Ottimizza bio e foto per attrarre persone compatibili.</p>
                 </div>
 
                 <!-- Feature 4 -->
-                <div class="reveal-up tw-bg-white tw-p-8 tw-rounded-2xl tw-shadow-sm hover:tw-shadow-md tw-transition-all tw-border tw-border-gray-100">
-                    <div class="tw-w-12 tw-h-12 tw-bg-purple-100 tw-rounded-xl tw-flex tw-items-center tw-justify-center tw-mb-6">
-                        <i class="bi bi-shield-check tw-text-2xl tw-text-purple-600"></i>
+                <div class="reveal-up tw-bg-coach-card tw-p-8 tw-rounded-2xl tw-border tw-border-white/5 hover:tw-border-purple-500/50 hover:tw-shadow-[0_5px_20px_rgba(168,85,247,0.15)] tw-transition-all">
+                    <div class="tw-w-12 tw-h-12 tw-bg-purple-500/10 tw-rounded-xl tw-flex tw-items-center tw-justify-center tw-mb-6">
+                        <i class="bi bi-shield-check tw-text-2xl tw-text-purple-500"></i>
                     </div>
-                    <h3 class="tw-text-xl tw-font-bold tw-mb-3">Privacy 100%</h3>
-                    <p class="tw-text-gray-600 tw-text-sm">I tuoi dati sono criptati e al sicuro. Niente spam.</p>
+                    <h3 class="tw-text-xl tw-font-bold tw-mb-3 tw-text-white">Privacy 100%</h3>
+                    <p class="tw-text-gray-400 tw-text-sm">I tuoi dati sono criptati e al sicuro. Niente spam.</p>
                 </div>
             </div>
         </section>
 
         <!-- FAQ SECTION -->
-        <section id="faq" class="tw-py-20 tw-bg-white">
+        <section id="faq" class="tw-py-20">
             <div class="tw-container tw-mx-auto tw-px-[5%] tw-max-w-3xl">
-                <h2 class="tw-text-3xl tw-font-bold tw-text-center tw-mb-12">Domande Frequenti</h2>
+                <h2 class="tw-text-3xl tw-font-bold tw-text-center tw-mb-12 tw-text-white">Domande Frequenti</h2>
                 
                 <div class="tw-flex tw-flex-col tw-gap-4">
-                    <div class="tw-border tw-border-gray-200 tw-rounded-lg tw-overflow-hidden">
-                        <button class="faq-btn tw-w-full tw-p-4 tw-flex tw-justify-between tw-items-center tw-bg-gray-50 hover:tw-bg-gray-100 tw-text-left tw-font-medium">
+                    <div class="tw-border tw-border-white/10 tw-rounded-xl tw-overflow-hidden tw-bg-coach-card">
+                        <button class="faq-btn tw-w-full tw-p-5 tw-flex tw-justify-between tw-items-center hover:tw-bg-white/5 tw-text-left tw-font-medium tw-text-gray-200 tw-transition-colors">
                             <span>È davvero gratuito?</span>
-                            <i class="bi bi-plus tw-text-2xl"></i>
+                            <i class="bi bi-plus tw-text-2xl tw-text-coach-teal"></i>
                         </button>
-                        <div class="faq-content tw-hidden tw-p-4 tw-text-gray-600 tw-bg-white">
+                        <div class="faq-content tw-hidden tw-p-5 tw-text-gray-400 tw-bg-black/20 tw-border-t tw-border-white/5">
                             Sì! I primi 30 giorni sono totalmente gratuiti. Poi costerà solo €3.99/mese. Puoi cancellare quando vuoi.
                         </div>
                     </div>
 
-                    <div class="tw-border tw-border-gray-200 tw-rounded-lg tw-overflow-hidden">
-                        <button class="faq-btn tw-w-full tw-p-4 tw-flex tw-justify-between tw-items-center tw-bg-gray-50 hover:tw-bg-gray-100 tw-text-left tw-font-medium">
+                    <div class="tw-border tw-border-white/10 tw-rounded-xl tw-overflow-hidden tw-bg-coach-card">
+                        <button class="faq-btn tw-w-full tw-p-5 tw-flex tw-justify-between tw-items-center hover:tw-bg-white/5 tw-text-left tw-font-medium tw-text-gray-200 tw-transition-colors">
                             <span>Cos'è il Coaching AI?</span>
-                            <i class="bi bi-plus tw-text-2xl"></i>
+                            <i class="bi bi-plus tw-text-2xl tw-text-coach-teal"></i>
                         </button>
-                        <div class="faq-content tw-hidden tw-p-4 tw-text-gray-600 tw-bg-white">
+                        <div class="faq-content tw-hidden tw-p-5 tw-text-gray-400 tw-bg-black/20 tw-border-t tw-border-white/5">
                             È un assistente intelligente che analizza le tue chat e ti suggerisce cosa scrivere per avere più successo e meno stress.
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
         <!-- PRICING / SIGNUP -->
         <section id="pricing" class="tw-py-24 tw-px-[5%]">
-            <div class="tw-max-w-5xl tw-mx-auto tw-bg-coach-text tw-rounded-3xl tw-text-white tw-overflow-hidden tw-shadow-2xl tw-flex tw-flex-col md:tw-flex-row">
+            <div class="tw-max-w-5xl tw-mx-auto tw-bg-coach-card tw-rounded-3xl tw-border tw-border-white/10 tw-overflow-hidden tw-shadow-2xl tw-flex tw-flex-col md:tw-flex-row">
                 
-                <!-- Parte Sinistra (Testo e Form) -->
+                <!-- Parte Sinistra -->
                 <div class="tw-p-10 md:tw-p-12 md:tw-w-1/2 tw-flex tw-flex-col tw-justify-center tw-z-10">
-                    <div class="tw-text-coach-coral tw-font-bold tw-tracking-widest tw-uppercase tw-mb-4">Offerta Beta</div>
-                    <h2 class="tw-text-3xl md:tw-text-4xl tw-font-bold tw-mb-4">Entra Oggi.</h2>
-                    <p class="tw-text-gray-300 tw-mb-8 tw-text-lg">
-                        Ottieni l'accesso anticipato e blocca il prezzo a <strong class="tw-text-white">€1.99/mese a vita</strong> (invece di €3.99).
+                    <div class="tw-text-coach-coral tw-font-bold tw-tracking-widest tw-uppercase tw-mb-4 tw-text-sm">Offerta Beta</div>
+                    <h2 class="tw-text-3xl md:tw-text-4xl tw-font-bold tw-mb-4 tw-text-white">Entra Oggi.</h2>
+                    <p class="tw-text-gray-400 tw-mb-8 tw-text-lg">
+                        Ottieni l'accesso anticipato e blocca il prezzo a <strong class="tw-text-white border-b border-coach-coral">€1.99/mese</strong> a vita.
                     </p>
                     
                     <form class="tw-flex tw-flex-col tw-gap-4 tw-w-full" onsubmit="handleSignup(event)">
-                        <div class="tw-bg-white tw-p-2 tw-rounded-3xl sm:tw-rounded-full tw-flex tw-flex-col sm:tw-flex-row tw-items-stretch tw-gap-2 tw-shadow-lg">
+                        <div class="tw-bg-white/5 tw-border tw-border-white/10 tw-p-2 tw-rounded-3xl sm:tw-rounded-full tw-flex tw-flex-col sm:tw-flex-row tw-items-stretch tw-gap-2">
                             <input 
                                 type="email" 
                                 placeholder="La tua email..." 
                                 required 
-                                class="tw-flex-1 tw-bg-transparent tw-px-6 tw-py-3 tw-text-gray-800 tw-outline-none tw-min-w-0 tw-text-lg tw-rounded-full"
+                                class="tw-flex-1 tw-bg-transparent tw-px-6 tw-py-3 tw-text-white tw-placeholder-gray-500 tw-outline-none tw-min-w-0 tw-text-lg tw-rounded-full"
                             >
                             <button 
                                 type="submit" 
-                                class="tw-bg-coach-teal tw-text-white tw-px-8 tw-py-3 tw-rounded-full tw-font-bold hover:tw-bg-[#258a99] tw-transition-colors tw-w-full sm:tw-w-auto tw-whitespace-nowrap"
+                                class="tw-bg-coach-coral tw-text-white tw-px-8 tw-py-3 tw-rounded-full tw-font-bold hover:tw-bg-[#e60063] tw-transition-colors tw-w-full sm:tw-w-auto tw-whitespace-nowrap tw-shadow-lg"
                             >
                                 Iscriviti
                             </button>
                         </div>
-                        <p class="tw-text-xs tw-text-gray-400 tw-text-center md:tw-text-left tw-pl-4">🔒 Solo per i primi 100 iscritti. No spam.</p>
+                        <p class="tw-text-xs tw-text-gray-500 tw-text-center md:tw-text-left tw-pl-4">🔒 Solo per i primi 100 iscritti. No spam.</p>
                     </form>
                 </div>
                 
-                <!-- Parte Destra (Immagine - FIX DEFINITIVO) -->
-                <!-- Usiamo Flexbox per centrare e allineare in basso l'immagine senza absolute -->
-                <div class="md:tw-w-1/2 tw-bg-gray-800 tw-flex tw-items-end tw-justify-center tw-pt-10 md:tw-pt-0 tw-relative tw-overflow-hidden">
-                    
-                    <!-- Gradiente decorativo -->
-                    <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-gray-900/90 tw-to-transparent tw-z-10 tw-pointer-events-none"></div>
-                    
-                    <!-- Immagine Phone -->
-                    <!-- tw-w-[80%] su mobile, tw-w-[65%] su desktop -->
-                    <!-- tw-max-w-[350px] per evitare che diventi gigante -->
-                    <!-- tw-mb-[-5%] per farla sbucare leggermente dal basso se vuoi l'effetto "cut-off", altrimenti toglilo -->
+                <!-- Parte Destra (Immagine) -->
+                <div class="md:tw-w-1/2 tw-bg-[#13141c] tw-flex tw-items-end tw-justify-center tw-pt-10 md:tw-pt-0 tw-relative tw-overflow-hidden">
+                    <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-t tw-from-[#13141c] tw-to-transparent tw-z-10 tw-pointer-events-none"></div>
                     <img 
                         src="./assets/images/home/phone.png" 
                         class="tw-relative tw-z-0 tw-w-[80%] md:tw-w-[65%] tw-max-w-[350px] tw-object-contain tw-transform tw-transition-transform hover:tw-scale-105 tw-duration-500 tw-mb-[-10px]" 
@@ -258,18 +254,17 @@
             </div>
         </section>
 
-
         <!-- FOOTER -->
-        <footer class="tw-bg-white tw-py-12 tw-border-t tw-border-gray-200">
+        <footer class="tw-bg-[#13141c] tw-py-12 tw-border-t tw-border-white/5">
             <div class="tw-container tw-mx-auto tw-px-[5%] tw-flex tw-flex-col md:tw-flex-row tw-justify-between tw-items-center tw-gap-6">
-                <div class="tw-flex tw-items-center tw-gap-2">
+                <div class="tw-flex tw-items-center tw-gap-3">
                     <img src="./assets/logo/logo.png" class="tw-h-8" alt="Logo">
-                    <span class="tw-font-bold tw-text-coach-text">CoachMatch</span>
+                    <span class="tw-font-bold tw-text-lg tw-text-white">CoachMatch</span>
                 </div>
-                <div class="tw-text-gray-500 tw-text-sm">© 2025 CoachMatch AI. Tutti i diritti riservati.</div>
-                <div class="tw-flex tw-gap-6 tw-text-gray-400">
-                    <a href="#" class="hover:tw-text-coach-teal"><i class="bi bi-instagram tw-text-xl"></i></a>
-                    <a href="#" class="hover:tw-text-coach-teal"><i class="bi bi-twitter-x tw-text-xl"></i></a>
+                <div class="tw-text-gray-500 tw-text-sm text-center md:tw-text-left">© 2025 CoachMatch AI. Tutti i diritti riservati.</div>
+                <div class="tw-flex tw-gap-6 tw-text-gray-500">
+                    <a href="#" class="hover:tw-text-coach-teal tw-transition-colors"><i class="bi bi-instagram tw-text-xl"></i></a>
+                    <a href="#" class="hover:tw-text-coach-teal tw-transition-colors"><i class="bi bi-twitter-x tw-text-xl"></i></a>
                 </div>
             </div>
         </footer>
@@ -278,10 +273,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
         
-        <!-- Il tuo file JS principale -->
         <script src="./index.js"></script>
         
-        <!-- Funzione per il Form (l'unica che serve qui) -->
         <script>
             function handleSignup(e) {
                 e.preventDefault();
