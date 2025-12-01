@@ -24,12 +24,17 @@
         
         <!-- HEADER FISSO -->
         <header class="tw-fixed tw-top-0 tw-z-50 tw-w-full tw-bg-[#1A1B26]/90 tw-backdrop-blur-md tw-shadow-lg tw-border-b tw-border-white/5 tw-transition-all tw-duration-300">
-            <div class="tw-flex tw-h-[80px] tw-w-full tw-items-center tw-justify-between tw-px-[5%] lg:tw-justify-around">
+            <!-- Cambiato h-[80px] in h-[90px] -->
+            <div class="tw-flex tw-h-[90px] tw-w-full tw-items-center tw-justify-between tw-px-[5%] lg:tw-justify-around">
                 
                 <!-- LOGO -->
                 <a class="tw-flex tw-items-center tw-gap-3 tw-min-w-max tw-z-50" href="#">
-                    <img src="./assets/logo/logo.png" alt="logo" class="tw-h-[60px] tw-w-[60px] md:tw-h-[70px] md:tw-w-[70px] tw-object-contain" />
-                    <span class="tw-font-bold tw-text-xl tw-tracking-tight">CoachMatch</span>
+                    <!-- Aumentate dimensioni: h-12 (48px) mobile -> h-16 (64px) / md:h-20 (80px) -->
+                    <!-- Se il logo è orizzontale, usa tw-w-auto invece di fissare la larghezza -->
+                    <img src="./assets/logo/logo.png" alt="logo" class="tw-h-[50px] tw-w-auto md:tw-h-[65px] tw-object-contain" />
+                    
+                    <!-- Nome App (Opzionale: se il logo ha già il testo, rimuovi questo span) -->
+                    <span class="tw-font-bold tw-text-xl tw-tracking-tight tw-text-white">CoachMatch</span>
                 </a>
                 
                 <!-- MENU DESKTOP -->
