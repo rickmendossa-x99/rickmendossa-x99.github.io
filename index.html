@@ -21,24 +21,15 @@
     </head>
 
     <body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-coach-bg tw-text-white tw-font-sans">
-
+        
         <!-- HEADER FISSO -->
         <header class="tw-fixed tw-top-0 tw-z-50 tw-w-full tw-bg-[#1A1B26]/90 tw-backdrop-blur-md tw-shadow-lg tw-border-b tw-border-white/5 tw-transition-all tw-duration-300">
             <div class="tw-flex tw-h-[80px] tw-w-full tw-items-center tw-justify-between tw-px-[5%] lg:tw-justify-around">
                 
-                <!-- LOGO + NOME (Allineamento Corretto) -->
-                <a class="tw-flex tw-items-center tw-gap-3 tw-z-50" href="#">
-                    <!-- Logo: Dimensione fissa controllata e object-contain per non deformare -->
-                    <img 
-                        src="./assets/logo/logo.png" 
-                        alt="CoachMatch Logo" 
-                        class="tw-h-[45px] tw-w-[45px] md:tw-h-[50px] md:tw-w-[50px] tw-object-contain" 
-                    />
-                    
-                    <!-- Testo: Allineato verticalmente, font bold e tracking leggero -->
-                    <span class="tw-font-bold tw-text-xl tw-tracking-tight tw-text-white tw-leading-none tw-mt-1">
-                        CoachMatch
-                    </span>
+                <!-- LOGO -->
+                <a class="tw-flex tw-items-center tw-gap-3 tw-min-w-max tw-z-50" href="#">
+                    <img src="./assets/logo/logo.png" alt="logo" class="tw-h-[60px] tw-w-[60px] md:tw-h-[70px] md:tw-w-[70px] tw-object-contain" />
+                    <span class="tw-font-bold tw-text-xl tw-tracking-tight">CoachMatch</span>
                 </a>
 
                 <!-- MENU DESKTOP -->
@@ -55,7 +46,7 @@
                 <button class="bi bi-list tw-text-3xl tw-text-white lg:tw-hidden tw-z-50 tw-relative" onclick="toggleHeader()" id="collapse-btn" aria-label="Menu"></button>
             </div>
 
-            <!-- MENU MOBILE (Invariato) -->
+            <!-- MENU MOBILE -->
             <div id="collapsed-header-items" class="tw-fixed tw-top-0 tw-right-0 tw-h-screen tw-bg-[#1A1B26] tw-border-l tw-border-white/10 tw-shadow-2xl tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-8 tw-w-0 tw-opacity-0 tw-pointer-events-none tw-transition-all tw-duration-300 tw-z-40 lg:tw-hidden">
                 <a class="tw-text-2xl tw-text-gray-200 hover:tw-text-coach-coral tw-font-bold" href="#features" onclick="toggleHeader()">Features</a>
                 <a class="tw-text-2xl tw-text-gray-200 hover:tw-text-coach-coral tw-font-bold" href="#pricing" onclick="toggleHeader()">Prezzi</a>
@@ -65,7 +56,6 @@
                 </a>
             </div>
         </header>
-
 
         <!-- HERO SECTION -->
         <section class="hero-section tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-flex-col tw-overflow-hidden tw-pt-[100px]" id="hero-section">
