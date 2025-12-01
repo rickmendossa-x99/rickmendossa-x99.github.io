@@ -239,9 +239,14 @@
                     </p>
                     <!-- Form aggiornato con ID per Javascript -->
                     <form id="email-form" class="tw-flex tw-flex-col tw-gap-4 tw-w-full">
+                        <!-- CAMPO HONEYPOT NASCOSTO (Anti-Spam) -->
+                        <!-- Lo stile opacity:0 e position:absolute lo rende invisibile all'uomo ma visibile al bot -->
+                        <input type="text" name="b_field" tabindex="-1" autocomplete="off" style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1;">
+
                         <div class="tw-bg-white/5 tw-border tw-border-white/10 tw-p-2 tw-rounded-3xl sm:tw-rounded-full tw-flex tw-flex-col sm:tw-flex-row tw-items-stretch tw-gap-2">
                             <input 
                                 id="email-input"
+                                name="email" 
                                 type="email" 
                                 placeholder="La tua email..." 
                                 required 
@@ -294,7 +299,7 @@
         
         <script>
             // URL dello script Google che hai copiato prima
-            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbypAGYG4JcBAwg6M79o1EJ9LpNXPUBb0NJ8799IL3JzpTL7b-JJW5cp_r5jn5uDvpz8/exec";
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxdkKC2hir3yr4pryqb8YVZn85cFRL40RfFLI9DbF_3rY49Vydqlsv4tsgM7aJWBP5_/exec";
 
             const form = document.getElementById('email-form');
             const submitButton = document.getElementById('submit-button');
